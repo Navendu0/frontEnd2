@@ -46,7 +46,7 @@ function AddProduct() {
     }
 
     if (inputText.youtubeLinkArray.length == 0) {
-      return alert("please add some Highlight about your product")
+      return alert("please add some yotube links about your product")
     }
 
 
