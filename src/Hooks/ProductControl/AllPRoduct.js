@@ -41,7 +41,7 @@ const allProduct = () => {
     }).catch(err => {
       setLoading({ ...loading, msg:err.message, isLoading: false })
 
-     // console.error(err)
+     console.error(err)
     })
   }
 

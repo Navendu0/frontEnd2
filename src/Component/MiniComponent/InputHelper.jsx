@@ -15,7 +15,7 @@ function InputHelper({
     isRequire
 }) {
 
-    
+
 
     return (
         <div className="grid  gap-6">
@@ -30,45 +30,46 @@ function InputHelper({
                     className={`mt-1 flex rounded shadow-lg  
                 `}
                 >
-                   
-                  {!inputType ? 
-                   <textarea
-                   spellCheck={false}
-                        type="text"
-                        rows={rowD || 1}
-                        name="company_website"
-                        id="company_website"
-                        className="p-2
+
+                    {!inputType ?
+                        <textarea
+                            spellCheck={false}
+                            type="text"
+                            rows={rowD || 1}
+                            name="company_website"
+                            id="company_website"
+                            className="p-2
           border-gray-500
           focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm"
-                        onChange={(e) =>
-                            setValue({ ...value, [inputName]: e.target.value })
-                        }
-                        value={value?.[inputName]}
-                        placeholder={hint}
-                        required={isRequire}
-                    /> : 
-                       
-                       <input
-                        type="number"
-                        rows={rowD || 1}
-                        name="company_website"
-                        id="company_website"
-                        className="p-2
+                            onChange={(e) =>
+                                setValue({ ...value, [inputName]: e.target.value })
+                            }
+                            value={value?.[inputName]}
+                            placeholder={hint}
+                            required={isRequire}
+                        /> :
+
+                        <input
+                            type="number"
+                            rows={rowD || 1}
+                            name="company_website"
+                            id="company_website"
+                            className="p-2
                         
           border-gray-500
           focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm"
-                        onChange={(e) =>
-                            setValue({ ...value, [inputName]: e.target.value })
-                        }
-                        value={value?.[inputName]}
-                        placeholder={hint}
-                        required
-                    />
+                            onChange={(e) =>
+                                setValue({ ...value, [inputName]: e.target.value })
+                            }
+                            value={value?.[inputName]}
+                            placeholder={hint}
+                            required
+                        />
 
-                     }
+                    }
 
                     <button
+                        type="button"
                         disabled={value?.[inputName] ? false : true}
                         onClick={save}
                         className={` 

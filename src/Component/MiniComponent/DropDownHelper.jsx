@@ -5,7 +5,7 @@ function DropDownHelper({ type, list,setShowModal,setType,inputText,setInputText
  
   function showModel(){
     setShowModal(true)
-      setType(type)
+      setType(type) 
   }
 
 

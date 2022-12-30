@@ -3,14 +3,14 @@ import { useState } from "react";
 const inputFieldHook = () => {
     const initialValue = {
         highLightText: '',
-        highLightTextArray:["hello","this is highligh ","this is highligh 2","this is highligh 3"],
+        highLightTextArray:[],
         youtubeLinkText:'',
-        youtubeLinkArray:["https://youtu.be/tlUcmD0zPI4","https://youtu.be/tlUcmD0zPI4"],
-        brandName:"realme",
-        categoryName:"mobile",
-        price:"1234536",
-        name:"kuchbhi",
-        description:"kuchbhi kuchbhi kuchbhi kuchbhi kuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhikuchbhi kuchbhi kuchbhi kuchbhi"
+        youtubeLinkArray:[],
+        brandName:"",
+        categoryName:"",
+        price:"",
+        name:"",
+        description:""
     }
 
     const [inputText, setInputText] = useState(initialValue)

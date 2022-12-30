@@ -20,7 +20,7 @@ function AddProduct() {
 
   const [showModal, setShowModal] = React.useState(false);
 
-  const [categoryList, brandList, saveCategoryOrBrand] = categoryNbrandHooks(type, setShowModal, inputText)
+  const [categoryList, brandList, saveCategoryOrBrand] = categoryNbrandHooks(type, setShowModal, inputText,setInputText)
 
   const [uploadImages] = productSave(image, inputText, setInputText, setImage, initialValue)
 
