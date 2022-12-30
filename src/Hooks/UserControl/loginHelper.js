@@ -24,6 +24,8 @@ const loginHelper = () => {
     }, { withCredentials: true }).then((res) => {
       // setCheck(res.data)
       if (!res.data.success) {
+        setLoading({ ...loading, msg:res.data.message, isLoading: false })
+
         return alert(res.data.message)
 
       }
@@ -36,7 +38,8 @@ const loginHelper = () => {
 
       return alert(res.data.message)
 
-    }).catch(err =>{ alert(err)
+    }).catch(err =>{
+       alert(err)
       setLoading({ ...loading, msg:err.message, isLoading: false })
 
     })
