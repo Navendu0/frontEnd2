@@ -86,6 +86,8 @@ const categoryNbrandHooks = (type, setShowModal, inputText, setInputText) => {
 
 
             }).catch(err => {
+                setLoading({ ...loading, msg: err.message, isLoading: false })
+
                 alert('occur error while deleting ' + err.message)
             })
         }
