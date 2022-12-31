@@ -29,7 +29,7 @@ function App() {
         isLoading:false
     })
 
-    const [isUser, setIsUser] = useState()
+    const [isUser, setIsUser] = useState(null)
 
     const signin = () => {
         setIsUser(true)
@@ -61,7 +61,12 @@ function App() {
     }
 
     useEffect(() => {
+        setLoading({ ...loading, msg:"connecting with database", isLoading: true })
+
         checkUser()
+
+        setLoading({ ...loading, msg:"connecting with database", isLoading: false })
+
     }, [])
 
     return (
