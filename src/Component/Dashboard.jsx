@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ProductDetailsPage from './ProductDetailsPage';
 
 // import AppContext from '../App'
 

@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import allProduct from '../../Hooks/ProductControl/AllPRoduct'
 
+import { useNavigate } from "react-router-dom";
+
 function AllProduct() {
-  const [products,deleteProduct] = allProduct()
+  const [products, deleteProduct] = allProduct()
+
+  const [openModal, setOpenModal] = useState(false)
+
+  const [product,setProduct]=useState()
+  let navigate = useNavigate();
+
+
+  const gotoProduct = () => {
+    navigate('/productDetails',{state:product})
+  }
 
   return (
     <div className='grid grid-cols-1'>
@@ -48,7 +60,7 @@ function AllProduct() {
 
             {
               products && products.map((props, index) => {
-                const{name, price,images, highlightText, description, youtubeLinks, category, brandName}=props
+                const { name, price, images, highlightText, description, youtubeLinks, category, brandName } = props
                 return (<tr key={index} className=" bg-gray-300 border-b capitalize ">
                   <td
                     scope="row"
@@ -83,23 +95,25 @@ function AllProduct() {
                     {description}
                   </td>
                   <td className="py-4 px-4 text-gray-800 font-medium">
-                    {highlightText.length+" Elements"}
+                    {highlightText.length + " Elements"}
                   </td>
                   <td
                     scope="row"
                     className="py-4 px-4 font-medium text-gray-900 whitespace-nowrap"
                   >
-                    {youtubeLinks.length+" Elements"}
+                    {youtubeLinks.length + " Elements"}
                   </td>
                   <td className="py-4 px-4 text-gray-800 font-medium
                   whitespace-nowrap  max-w-xs overflow-hidden truncate
                   ">
-                    {images.length+" Elements"}
+                    {images.length + " Elements"}
                   </td>
                   <td className="py-4 px-4 text-gray-800 font-medium cursor-pointer"
-                  onClick={()=>deleteProduct(props._id)}
+                    onClick={() => {setOpenModal(true)
+                     setProduct(props)
+                    }}
                   >
-                    delete
+                    chose
                   </td>
 
                 </tr>)
@@ -109,6 +123,61 @@ function AllProduct() {
           </tbody>
         </table>
       </div>
+
+      {openModal && <div
+        className="justify-center items-center flex 
+            rounded-b
+            overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-dashed  focus:outline-none"
+      >
+        <div className="relative w-11/12 
+            sm:w-2/4
+            p-2 rounded-lg
+            my-6 mx-auto max-w-3xl
+            bg-white
+            ">
+          {/*content*/}
+          <div className=" p-2 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none  border-2 border-dashed border-gray-300 ">
+            {/*header*/}
+
+            <div className='flex justify-between '>
+              <h1 className=' text-black text-lg font-semibold oldstyle-nums uppercase '>
+                choose a action
+              </h1>
+
+              <button
+                className="text-red-500 background-transparent font-bold uppercase  py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button"
+                onClick={() => setOpenModal(false)}
+              >
+                Close
+              </button>
+
+            </div>
+
+
+
+            {/*body*/}
+            <div
+              type='button'
+              className='grid grid-cols-2 gap-1'>
+              <button className='text-white bg-red-600 p-1 rounded'>
+                delete
+              </button>
+
+              <button
+                onClick={() => gotoProduct()}
+                type='button'
+                className='text-white bg-blue-600 p-1 rounded'>
+                view product
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>}
+
     </div>
   )
 }

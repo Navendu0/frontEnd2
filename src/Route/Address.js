@@ -1,6 +1,6 @@
 export const url ={
 
-baseUrl:'https://ms-maity-backend.onrender.com',
+baseUrl:'http://localhost:4000',
 
 route:'/api/v1',
 

@@ -14,6 +14,7 @@ import AllProduct from './Component/ProductControl/AllProduct'
 import AddProduct from './Component/ProductControl/AddProduct'
 import './App.css'
 import { url } from './Route/Address'
+import ProductDetailsPage from './Component/ProductDetailsPage'
 
 
 export const AppContext = createContext(null)
@@ -29,7 +30,7 @@ function App() {
         isLoading:false
     })
 
-    const [isUser, setIsUser] = useState(null)
+    const [isUser, setIsUser] = useState(true)
 
     const signin = () => {
         setIsUser(true)
@@ -56,16 +57,14 @@ function App() {
 
             }
         }).catch(err => {
-           // console.error(err)
+           console.error(err)
         })
     }
 
     useEffect(() => {
-        setLoading({ ...loading, msg:"connecting with database", isLoading: true })
 
-        checkUser()
+      //  checkUser()
 
-        setLoading({ ...loading, msg:"connecting with database", isLoading: false })
 
     }, [])
 
@@ -97,6 +96,8 @@ function App() {
                             } />
 
                             <Route path="/addProduct" element={<AddProduct />} />
+                            <Route path="/productDetails" element={<ProductDetailsPage />} />
+
                         </Routes>} />
                     </div>}
 
