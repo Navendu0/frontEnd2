@@ -16,6 +16,8 @@ function AllProduct() {
     navigate('/productDetails',{state:product})
   }
 
+
+
   return (
     <div className='grid grid-cols-1'>
       <h1 className=' md:h-[8vh] text-center mt-4 md:mb-3
@@ -158,6 +160,7 @@ function AllProduct() {
 
             {/*body*/}
             <div
+            onClick={()=>deleteProduct(product?._id)}
               type='button'
               className='grid grid-cols-2 gap-1'>
               <button className='text-white bg-red-600 p-1 rounded'>
