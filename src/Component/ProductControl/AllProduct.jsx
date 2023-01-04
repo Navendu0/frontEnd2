@@ -160,8 +160,8 @@ function AllProduct() {
 
             {/*body*/}
             <div
-            onClick={()=>deleteProduct(product?._id)}
-              type='button'
+              onClick={()=>deleteProduct(product?._id)}
+           
               className='grid grid-cols-2 gap-1'>
               <button className='text-white bg-red-600 p-1 rounded'>
                 delete
@@ -169,7 +169,7 @@ function AllProduct() {
 
               <button
                 onClick={() => gotoProduct()}
-                type='button'
+              
                 className='text-white bg-blue-600 p-1 rounded'>
                 view product
               </button>
