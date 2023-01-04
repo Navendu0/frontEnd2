@@ -30,7 +30,7 @@ function App() {
         isLoading:false
     })
 
-    const [isUser, setIsUser] = useState(true)
+    const [isUser, setIsUser] = useState(false)
 
     const signin = () => {
         setIsUser(true)
@@ -63,7 +63,7 @@ function App() {
 
     useEffect(() => {
 
-      //  checkUser()
+      checkUser()
 
 
     }, [])
