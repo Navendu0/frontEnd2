@@ -160,10 +160,10 @@ function AllProduct() {
 
             {/*body*/}
             <div
-              onClick={()=>(alert(product?._id))}
-           
               className='grid grid-cols-2 gap-1'>
-              <button className='text-white bg-red-600 p-1 rounded'>
+              <button
+               onClick={()=>(deleteProduct(product?._id))}
+               className='text-white bg-red-600 p-1 rounded'>
                 delete
               </button>
 

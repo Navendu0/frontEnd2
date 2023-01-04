@@ -11,10 +11,11 @@ const ProductDetailsPage = () => {
     <div className='max-h-full overflow-y-auto'>
 
     <div className="flex flex-col md:flex-row ">
-    <div className="mb-4 md:max-w-screen-md md:pr-4 flex overflow-auto 
-    ">
+    <div className="mb-4 md:max-w-screen-md md:pr-4 flex overflow-x-auto  mr-2 space-x-4">
       {state?.images.map((image) => (
-        <img src={image.url} alt={image.alt} key={image.url} className="h-[40vh] object-scale-down md:h-auto" />
+        <img src={image.url} alt={image.alt} key={image.url} className="
+           max-h-[30vh] w-screen
+        object-cover md:h-auto" />
       ))}
     </div>
     <div className="flex flex-col md:w-1/2 md:pl-4">
