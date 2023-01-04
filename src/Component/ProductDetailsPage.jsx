@@ -24,7 +24,7 @@ const ProductDetailsPage = () => {
           h-[45vh]
           object-contain
           '/>
-            <div className=' flex flex-wrap overflow-auto 
+            <div className=' flex overflow-auto 
             h-[10vh]
             md:h-[20vh]
             md:max-h-[20vh] w-full proPhoto space-x-2   justify-center mt-2'>
