@@ -162,13 +162,16 @@ function AllProduct() {
             <div
               className='grid grid-cols-2 gap-1'>
               <button
-               onClick={()=>(deleteProduct(product?._id))}
+               onClick={()=>{(deleteProduct(product?._id))
+                setOpenModal(false)}}
                className='text-white bg-red-600 p-1 rounded'>
                 delete
               </button>
 
               <button
-                onClick={() => gotoProduct()}
+                onClick={() => {gotoProduct()
+                setOpenModal(false)
+                }}
               
                 className='text-white bg-blue-600 p-1 rounded'>
                 view product

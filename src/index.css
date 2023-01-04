@@ -21,6 +21,11 @@
     scrollbar-width: none;  /* Firefox */
   }
 
+  h3{
+    font-size: large;
+    font-weight: 600;
+  }
+
   /* td{
     max-width: 20vw;
     overflow: hidden;
