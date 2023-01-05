@@ -15,6 +15,7 @@ import AddProduct from './Component/ProductControl/AddProduct'
 import './App.css'
 import { url } from './Route/Address'
 import ProductDetailsPage from './Component/ProductDetailsPage'
+import FeaturePhotos from './Component/FeaturePhoto/FeaturePhotos'
 
 
 export const AppContext = createContext(null)
@@ -63,8 +64,7 @@ function App() {
 
     useEffect(() => {
 
-      checkUser()
-
+   checkUser()
 
     }, [])
 
@@ -87,7 +87,7 @@ function App() {
                     :
                     <div >
                         <Menu comp={<Routes>
-                            <Route path="/" element={<Dashboard />} />
+                            <Route path="/" element={<AllProduct />} />
 
                             <Route path="/brandorcategory" element={<CreateCategory />} />
 
@@ -96,7 +96,10 @@ function App() {
                             } />
 
                             <Route path="/addProduct" element={<AddProduct />} />
+                          
                             <Route path="/productDetails" element={<ProductDetailsPage />} />
+
+                            <Route path="/featurePhotos" element={<FeaturePhotos />} />
 
                         </Routes>} />
                     </div>}

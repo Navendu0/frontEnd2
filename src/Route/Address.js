@@ -1,6 +1,6 @@
 export const url ={
 
-baseUrl:'https://ms-maity-backend.onrender.com',
+baseUrl:'http://3.109.49.13:4000',
 
 route:'/api/v1',
 
@@ -20,7 +20,11 @@ imageUpload:'/imageupload',
 
 createProduct:'/addProduct',
 allProduct:'/allproduct',
-deleteProduct:'/deleteproduct'
+deleteProduct:'/deleteproduct',
 
+uploadFeautureImage:'/uploadfeaturephotos',
+deleteFeatureImage:'/deletefeaturephotos',
+
+allFeaturePhotos:"/allFeaturePhotos"
 
 }

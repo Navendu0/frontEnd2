@@ -16,6 +16,7 @@ const loginHelper = () => {
   const [password, setPassword] = useState()
 
   const loginAction = async () => {
+
     setLoading({ ...loading, msg:"Log In....", isLoading: true })
 
     await axios.post(baseUrl + route + login, {
