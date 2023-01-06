@@ -1,6 +1,6 @@
 export const url ={
 
-baseUrl:'http://3.109.49.13:4000',
+baseUrl:'https://ms-maity-backend.onrender.com',
 
 route:'/api/v1',
 
