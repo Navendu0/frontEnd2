@@ -63,14 +63,13 @@ const ProductDetailsPage = () => {
 
             {/*....  highlights..... */}
             <h3>Highlights </h3>
+        
             <ul className="divide-y-4 list-decimal">
               {state.highlightText && state.highlightText.map((props, index) => (
                 <li key={index} className="bg-slate-50 p-1 rounded " >
-                  {index + 1}) {props}
+                <p  className=" whitespace-pre-line ">{props}  </p>
                 </li>
               ))}
-
-
             </ul>
 
             {/*....  description..... */}
