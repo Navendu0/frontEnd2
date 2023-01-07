@@ -12,7 +12,8 @@ function InputHelper({
     save,
     deleteHighlight,
     inputType,
-    isRequire
+    isRequire,
+    onEdit
 }) {
 
 
@@ -93,11 +94,14 @@ function InputHelper({
                         <ul className="space-y-1 max-w-lg list-disc list-inside text-black">
                             {list &&
                                 list.map((props, index) => (
-                                    <li key={index} className="flex justify-between">
+                                    <li
+                                  
+                                     key={index} className="flex justify-between">
                                         {"-> "}
-                                        {props}
+                                    <h1    onClick={()=>onEdit(index,props)}>  {props} </h1>   
 
                                         <button
+                                           type="button"
                                             onClick={() => deleteHighlight(index)}
                                             className=" bg-red-500 text-white p-1 rounded-md text-sm mt-1"
                                         >

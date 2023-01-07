@@ -53,15 +53,15 @@ function AddProduct() {
     uploadImages()
   }
 
-console.log(showFull)
+
 
 
 
   return (
     <div className="container max-h-screen overflow-y-auto addProductScroll">
 
-      <h1 class=" text-center mt-4
-     text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-blue-200 from-sky-300"> Add Product </span> </h1>
+      <h1 className=" text-center mt-4
+     text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-blue-200 from-sky-300"> Add Product </span> </h1>
 
       <div className="grid  gap-6 mb-6 ">
         <form onSubmit={saveProduct}>

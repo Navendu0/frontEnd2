@@ -8,12 +8,12 @@ function AllProduct() {
 
   const [openModal, setOpenModal] = useState(false)
 
-  const [product,setProduct]=useState()
+  const [product, setProduct] = useState()
   let navigate = useNavigate();
 
 
   const gotoProduct = () => {
-    navigate('/productDetails',{state:product})
+    navigate('/productDetails', { state: product })
   }
 
 
@@ -111,8 +111,9 @@ function AllProduct() {
                     {images.length + " Elements"}
                   </td>
                   <td className="py-4 px-4 text-gray-800 font-medium cursor-pointer"
-                    onClick={() => {setOpenModal(true)
-                     setProduct(props)
+                    onClick={() => {
+                      setOpenModal(true)
+                      setProduct(props)
                     }}
                   >
                     chose
@@ -161,18 +162,31 @@ function AllProduct() {
             {/*body*/}
             <div
               className='grid grid-cols-2 gap-1'>
+
               <button
-               onClick={()=>{(deleteProduct(product?._id))
-                setOpenModal(false)}}
-               className='text-white bg-red-600 p-1 rounded'>
+                onClick={() => {
+                  navigate('/editProduct', { state: product })
+                  setOpenModal(false)
+                }}
+
+                className='text-white bg-green-600 p-1 rounded'>
+                Edit Product
+              </button>
+              <button
+                onClick={() => {
+                  (deleteProduct(product?._id))
+                  setOpenModal(false)
+                }}
+                className='text-white bg-red-600 p-1 rounded'>
                 delete
               </button>
 
               <button
-                onClick={() => {gotoProduct()
-                setOpenModal(false)
+                onClick={() => {
+                  gotoProduct()
+                  setOpenModal(false)
                 }}
-              
+
                 className='text-white bg-blue-600 p-1 rounded'>
                 view product
               </button>

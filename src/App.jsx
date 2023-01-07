@@ -16,6 +16,7 @@ import './App.css'
 import { url } from './Route/Address'
 import ProductDetailsPage from './Component/ProductDetailsPage'
 import FeaturePhotos from './Component/FeaturePhoto/FeaturePhotos'
+import EditProduct from './Component/ProductControl/EditProduct'
 
 
 export const AppContext = createContext(null)
@@ -100,6 +101,8 @@ function App() {
                             <Route path="/productDetails" element={<ProductDetailsPage />} />
 
                             <Route path="/featurePhotos" element={<FeaturePhotos />} />
+
+                            <Route path="/editProduct" element={<EditProduct />} />
 
                         </Routes>} />
                     </div>}
