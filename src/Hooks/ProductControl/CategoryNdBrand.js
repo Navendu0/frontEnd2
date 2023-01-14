@@ -7,7 +7,7 @@ import inputFieldHook from "./InputFieldHooks";
 
 
 
-const categoryNbrandHooks = (type, setShowModal, inputText, setInputText) => {
+const categoryNbrandHooks = (type, setShowModal, inputText, setInputText, image, setImage) => {
     const { baseUrl, route, creteCategory, createBrand, getCategoryAndBrand, deleteBrand, deleteCategory } = url
 
     const { loading, setLoading } = useContext(AppContext)
@@ -39,35 +39,55 @@ const categoryNbrandHooks = (type, setShowModal, inputText, setInputText) => {
                 })
         }
         if (type == "category") {
+
             setLoading({ ...loading, msg: "saving Category", isLoading: true })
-            return axios.post(baseUrl + route + creteCategory, { name: inputText.categoryName }, { withCredentials: true }).then((res) => {
+
+            let formData = new FormData();
+            var myBlob = new Blob();
+
+            image.forEach((element, index) => {
+                const myFile = new File([element], element.name, {
+                    type: myBlob.type,
+                });
+
+                formData.append("categoryImage", myFile);
+            });
+
+            formData.append('json', JSON.stringify({ name: inputText.categoryName }))
+
+            return axios.post(baseUrl + route + creteCategory, formData, { withCredentials: true }, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+
+            }).then((res) => {
 
                 setCategoryList(oldarray => [...oldarray, res?.data?.category])
                 alert(res.data.message)
                 setShowModal(false)
                 setInputText({ ...inputText, categoryName: "" })
                 setLoading({ ...loading, msg: "complete", isLoading: false })
-
+                setImage([])
             }).catch(e => {
-                setLoading({ ...loading, msg:e.message, isLoading: false })
+                setLoading({ ...loading, msg: e.message, isLoading: false })
 
                 alert(e.message)
-               // console.error(e.message)
+                // console.error(e.message)
             })
         }
     }
 
     const getCategory = async () => {
-        setLoading({ ...loading, msg:"Fetch category and brand", isLoading: true })
+        setLoading({ ...loading, msg: "Fetch category and brand", isLoading: true })
 
         await axios.get(baseUrl + route + getCategoryAndBrand, { withCredentials: true }).then((res) => {
-           // console.log(res.data)
+            // console.log(res.data)
             setCategoryList(res?.data?.categories)
             setBrandList(res?.data?.brand)
-            setLoading({ ...loading, msg:"fetch complete", isLoading: false })
+            setLoading({ ...loading, msg: "fetch complete", isLoading: false })
 
         }).catch(err => {
-            setLoading({ ...loading, msg:err.message, isLoading: false })
+            setLoading({ ...loading, msg: err.message, isLoading: false })
             console.error(err)
         })
 
@@ -75,14 +95,14 @@ const categoryNbrandHooks = (type, setShowModal, inputText, setInputText) => {
 
     const deleteCategoryOrBrand = async (id) => {
         if (type == "category") {
-            setLoading({ ...loading, msg:"deleting category", isLoading: true })
+            setLoading({ ...loading, msg: "deleting category", isLoading: true })
 
             return await axios.post(baseUrl + route + deleteCategory, { id: id }, { withCredentials: true }).then((res) => {
                 const result = categoryList.filter((item, index) => item._id != id)
                 // setProducts([res])
                 alert(res.data.message)
                 setCategoryList(result)
-                setLoading({ ...loading, msg:"deleted ", isLoading: false })
+                setLoading({ ...loading, msg: "deleted ", isLoading: false })
 
 
             }).catch(err => {
@@ -92,7 +112,7 @@ const categoryNbrandHooks = (type, setShowModal, inputText, setInputText) => {
             })
         }
         if (type == "brand") {
-            setLoading({ ...loading, msg:"deleting category", isLoading: true })
+            setLoading({ ...loading, msg: "deleting category", isLoading: true })
 
             return await axios.post(baseUrl + route + deleteBrand, { id: id }, { withCredentials: true }).then((res) => {
                 const result = brandList.filter((item, index) => item._id != id)
@@ -100,10 +120,10 @@ const categoryNbrandHooks = (type, setShowModal, inputText, setInputText) => {
                 alert(res.data.message)
 
                 setBrandList(result)
-                setLoading({ ...loading, msg:"delet complete", isLoading: false })
+                setLoading({ ...loading, msg: "delet complete", isLoading: false })
 
             }).catch(err => {
-                setLoading({ ...loading, msg:err.message, isLoading: false })
+                setLoading({ ...loading, msg: err.message, isLoading: false })
 
                 //console.log(err)
                 alert('occur error while deleting ')

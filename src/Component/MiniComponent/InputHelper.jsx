@@ -13,9 +13,9 @@ function InputHelper({
     deleteHighlight,
     inputType,
     isRequire,
-    onEdit
+    onEdit,
+    comp
 }) {
-
 
 
     return (
@@ -69,18 +69,34 @@ function InputHelper({
 
                     }
 
-                    <button
-                        type="button"
-                        disabled={value?.[inputName] ? false : true}
-                        onClick={save}
-                        className={` 
+                    <div
+                        
+                        className="flex flex-col divide-y-2">
+                        {
+                            (inputName == "categoryName") &&
+
+                         
+                            comp
+
+
+                        }
+
+
+
+                        <button
+                            type="button"
+                            disabled={value?.[inputName] ? false : true}
+                            onClick={save}
+                            className={` 
                         ${value?.[inputName] ? "bg-blue-500" : "bg-blue-300"}
                         shadow-md shadow-blue-500/50 text-white w-14 h-8 rounded-md 
                      ${buttonNeed ? "" : "hidden"} 
     `}
-                    >
-                        save
-                    </button>
+                        >
+                            save
+                        </button>
+                    </div>
+
                 </div>
 
                 {/*........... conditionally button render............ */}
@@ -95,13 +111,13 @@ function InputHelper({
                             {list &&
                                 list.map((props, index) => (
                                     <li
-                                  
-                                     key={index} className="flex justify-between">
+
+                                        key={index} className="flex justify-between">
                                         {"-> "}
-                                    <h1    onClick={()=>onEdit(index,props)}>  {props} </h1>   
+                                        <h1 onClick={() => onEdit(index, props)}>  {props} </h1>
 
                                         <button
-                                           type="button"
+                                            type="button"
                                             onClick={() => deleteHighlight(index)}
                                             className=" bg-red-500 text-white p-1 rounded-md text-sm mt-1"
                                         >

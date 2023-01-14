@@ -1,13 +1,11 @@
 import React from 'react'
 import InputHelper from './InputHelper'
 
-function PopupModal({showModal,setShowModal,type,inputText,setInputText,save}) {
+function PopupModal({ showModal, setShowModal, type, inputText, setInputText, save ,comp}) {
 
-  console.log(type)
- 
   return (
     <>
-  
+
       {showModal ? (
         <>
           <div
@@ -24,13 +22,13 @@ function PopupModal({showModal,setShowModal,type,inputText,setInputText,save}) {
               {/*content*/}
               <div className=" p-2 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none  border-2 border-dashed border-gray-300 ">
                 {/*header*/}
-                 
-               <div className='flex justify-between '>
-               <h1 className=' text-black text-lg font-semibold oldstyle-nums uppercase '>
-                    Create  {type} 
-                 </h1>
 
-                 <button
+                <div className='flex justify-between '>
+                  <h1 className=' text-black text-lg font-semibold oldstyle-nums uppercase '>
+                    Create  {type}
+                  </h1>
+
+                  <button
                     className="text-red-500 background-transparent font-bold uppercase  py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
@@ -38,12 +36,14 @@ function PopupModal({showModal,setShowModal,type,inputText,setInputText,save}) {
                     Close
                   </button>
 
-               </div> 
+                </div>
 
-                 
+
 
                 {/*body*/}
-              <InputHelper buttonNeed={true} rowD={4} hint={"Enter "+type+" Name"} inputName={type+"Name"} setValue={setInputText} value={inputText} save={save} />
+                <InputHelper buttonNeed={true} rowD={4} hint={"Enter " + type + " Name"} inputName={type + "Name"} setValue={setInputText} value={inputText} save={save} 
+                 comp={comp}
+                 />
               </div>
             </div>
           </div>

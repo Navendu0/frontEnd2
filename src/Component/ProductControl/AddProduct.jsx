@@ -20,7 +20,7 @@ function AddProduct() {
 
   const [showModal, setShowModal] = React.useState(false);
 
-  const [categoryList, brandList, saveCategoryOrBrand] = categoryNbrandHooks(type, setShowModal, inputText,setInputText)
+  const [categoryList, brandList, saveCategoryOrBrand] = categoryNbrandHooks(type, setShowModal, inputText,setInputText,image,setImage)
 
   const [uploadImages] = productSave(image, inputText, setInputText, setImage, initialValue)
 
@@ -68,7 +68,29 @@ function AddProduct() {
 
           <div className="">
 
-            <PopupModal showModal={showModal} setShowModal={setShowModal} type={type} inputText={inputText} setInputText={setInputText} save={saveCategoryOrBrand} />
+            <PopupModal showModal={showModal} setShowModal={setShowModal} type={type} inputText={inputText} setInputText={setInputText} save={saveCategoryOrBrand} 
+             
+             comp={
+              <div className="flex text-sm text-gray-600">
+                <label
+                  htmlFor="file-upload"
+                  className=" cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 outline-none ring-2 ring-offset-2 ring-indigo-500 mb-2"
+                >
+                  <span> {  loading?"wait ..": image.length == 0? "chose Photo":"photo selected" }</span>
+                  <input
+                    id="file-upload"
+                    name="file-upload"
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    className="sr-only"
+                    onChange={imageCompress}
+                  />
+                </label>
+              </div>
+           
+            }
+             />
 
             <div className="md:mt-0 md:col-span-2 ">
               <div>

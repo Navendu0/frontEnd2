@@ -3,12 +3,18 @@ import categoryNbrandHooks from '../../Hooks/ProductControl/CategoryNdBrand'
 import inputFieldHook from '../../Hooks/ProductControl/InputFieldHooks'
 import InputHelper from './InputHelper'
 
+import imageHelperHook from '../../Hooks/ProductControl/ImageHelperHooks'
+
 function CreateBrandCategory({name,type}) {
 
   const [inputText, setInputText] = inputFieldHook()
 
+  const [loading,image,setImage,imageCompress]= imageHelperHook()
 
-  const [categoryList, brandList, saveCategoryOrBrand,deleteCategoryOrBrand] = categoryNbrandHooks(type, ()=>{}, inputText,setInputText)
+  const [categoryList, brandList, saveCategoryOrBrand,deleteCategoryOrBrand] = categoryNbrandHooks(type, ()=>{}, inputText,setInputText,image,setImage)
+
+
+
  
 
   const list = () => {
@@ -30,11 +36,13 @@ function CreateBrandCategory({name,type}) {
 
     
     <div>
+    
         <h1 className=' md:h-[8vh] text-center mt-4 md:mb-3
      text-3xl font-extrabold  md:text-5xl  text-transparent bg-clip-text bg-gradient-to-r  from-slate-400 to-gray-500'>
         {name} Section
       </h1>
       <div className='grid md:grid-cols-2 sm:grid-cols-2 space-x-2'>
+
         <div className=' '>
           <InputHelper
             titile={`Create ${type}`}
@@ -45,8 +53,30 @@ function CreateBrandCategory({name,type}) {
             setValue={setInputText}
             inputName={type+"Name"}
             save={saveCategoryOrBrand}
-            
+            comp={
+              <div className="flex text-sm text-gray-600">
+                <label
+                  htmlFor="file-upload"
+                  className=" cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 outline-none ring-2 ring-offset-2 ring-indigo-500 mb-2"
+                >
+                  <span> {  loading?"wait ..": image.length == 0? "chose Photo":"photo selected" }</span>
+                  <input
+                    id="file-upload"
+                    name="file-upload"
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    className="sr-only"
+                    onChange={imageCompress}
+                  />
+                </label>
+              </div>
+           
+            }
+
+
           />
+
         </div>
         <div className="overflow-x-auto  mt-2 rounded-md max-h-[30vh] md:max-h-[40vh] mb-2">
           <table className="w-full text-sm text-left text-gray-500 ">

@@ -34,6 +34,8 @@ const imageHelperHook=()=>{
     }
   };
 
+  console.log(loading)
+
     return[loading,image,setImage,imageCompress]
 }
 
